@@ -14,6 +14,7 @@ module.exports = ({ github, context, core }) => {
                 data[contest] = data[contest] || {};
                 data[contest][problem] = data[contest][problem] || {};
                 data[contest][problem][ID] = yamlFront.loadFront(fs.readFileSync(file));
+                delete data[contest][problem][ID].__content;
             }
         }
     });
