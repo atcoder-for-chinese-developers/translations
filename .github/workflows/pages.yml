@@ -38,7 +38,7 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
-          git commit -m "bot: generate list.json"
+          git commit -m "bot: generate list.json" --allow-empty
           git push
   # Single deploy job since we're just deploying
   deploy:
