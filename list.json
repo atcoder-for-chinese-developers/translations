@@ -1,1 +1,1 @@
-{"abc272":{"abc272_a":{"test":{"title":"ABC 272 A 题解","tags":["模拟"],"author":"Chen Jn","created":"2022-10-13T00:00:00.000Z","__content":"\n\n题目要求 $N$ 个数的和，我们从 $1$ 枚举到 $N$，把所有数加起来即可。\n\n```cpp\n#include<bits/stdc++.h>\nusing namespace std;\nint n,a[105],s;\nsigned main(){\n    cin>>n;\n    for(int i=1;i<=n;i++)cin>>a[i],s+=a[i];\n    cout<<s<<'\\n';\n    return 0;\n}\n```\n\n"}}}}
+{"abc272":{"abc272_a":{"test":{"title":"ABC 272 A 题解","tags":["模拟"],"author":"Chen Jn","created":"2022-10-13T00:00:00.000Z"}}}}
