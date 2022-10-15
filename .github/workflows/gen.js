@@ -10,6 +10,7 @@ module.exports = ({ github, context, core }) => {
         if (stats.isFile()) {
             let parts = file.split('.');
             let extName = parts.slice(-1);
+            console.log(extName);
             if (extName === 'md' && parts.length === 4) {
                 let contest = parts[0], problem = parts[1], ID = parts[2];
                 data[contest] = data[contest] || {};
