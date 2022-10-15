@@ -6,11 +6,9 @@ module.exports = ({ github, context, core }) => {
     let data = {};
     list.forEach(file => {
         let stats = fs.statSync(file);
-        console.log(file);
         if (stats.isFile()) {
             let parts = file.split('.');
-            let extName = parts.slice(-1);
-            console.log(extName);
+            let extName = parts.slice(-1)[0];
             if (extName === 'md' && parts.length === 4) {
                 let contest = parts[0], problem = parts[1], ID = parts[2];
                 data[contest] = data[contest] || {};
