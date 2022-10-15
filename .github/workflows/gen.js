@@ -6,6 +6,7 @@ module.exports = ({ github, context, core }) => {
     let data = {};
     list.forEach(file => {
         let stats = fs.statSync(file);
+        console.log(file);
         if (stats.isFile()) {
             let parts = file.split('.');
             let extName = parts.slice(-1);
