@@ -1,7 +1,24 @@
 const fs = require('fs');
 const yamlFront = require('yaml-front-matter');
 
-module.exports = ({ github, context, core }) => {
+function deleteDirectory(path) {
+	if (fs.existsSync(path)) {
+		let list = fs.readdirSync(path);
+		list.forEach(file => {
+			let filePath = path + '/' + file;
+			if (fs.statSync(filePath).isFile()) fs.unlinkSync(filePath);
+			else deleteDirectory(filePath);
+		});
+		fs.rmdirSync(path);
+	}
+}
+
+function makeDist() {
+	deleteDirectory('dist');
+	fs.mkdirSync('dist');
+}
+
+function build() {
 	let list = fs.readdirSync('.');
 	let data = {};
 	list.forEach(file => {
@@ -14,10 +31,13 @@ module.exports = ({ github, context, core }) => {
 				data[contest] = data[contest] || {};
 				data[contest][problem] = data[contest][problem] || {};
 				data[contest][problem][ID] = yamlFront.loadFront(fs.readFileSync(file));
-				fs.writeFileSync(file, data[contest][problem][ID].__content.trim());
+				fs.writeFileSync('dist' + '/' + file, data[contest][problem][ID].__content.trim());
 				delete data[contest][problem][ID].__content;
 			}
 		}
 	});
-	fs.writeFileSync('list.json', JSON.stringify(data));
+	fs.writeFileSync('dist/list.json', JSON.stringify(data));
 }
+
+makeDist();
+build();

@@ -2,6 +2,9 @@
   "name": "translations",
   "version": "1.0.0",
   "description": "",
+  "scripts": {
+    "build": "node build.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/atcoder-for-chinese-developers/translations.git"
