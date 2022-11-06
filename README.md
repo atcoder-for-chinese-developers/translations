@@ -37,6 +37,8 @@ created: "<创作时间（格式比较随意，但需要保证能够被识别）
 
 访问 `<你的 GitHub Pages 网址，如 https://example.github.io>/translations/<比赛编号>.<题目编号>.<标识符>.md` 可以下载对应文章的 Markdown 源码；
 
+访问 `<你的 GitHub Pages 网址，如 https://example.github.io>/translations/<比赛编号>.<题目编号>.<标识符>.html` 可以下载对应文章渲染后的 HTML 代码（不建议直接浏览，因为缺少部分 CSS）；
+
 访问 `<你的 GitHub Pages 网址，如 https://example.github.io>/translations/list.json` 可以下载 `list.json` 文件。
 
 `list.json` 文件包含了文章列表和所有文章的头部信息，格式如下：
