@@ -29,10 +29,10 @@ function makeDist() {
 }
 
 function build() {
-	let list = fs.readdirSync('.');
-	let data = {};
-	list.forEach(file => {
-		let stats = fs.statSync(file);
+	let files = fs.readdirSync('src');
+	let list = {};
+	files.forEach(file => {
+		let stats = fs.statSync('src/' + file);
 		if (stats.isFile()) {
 			let parts = file.split('.');
 			let extName = parts.slice(-1)[0];
@@ -40,16 +40,18 @@ function build() {
 				console.log('Porcessing ', file);
 				let fileName = parts[0] + '.' + parts[1] + '.' + parts[2];
 				let contest = parts[0], problem = parts[1], ID = parts[2];
-				data[contest] = data[contest] || {};
-				data[contest][problem] = data[contest][problem] || {};
-				data[contest][problem][ID] = yamlFront.loadFront(fs.readFileSync(file));
-				let content = data[contest][problem][ID].__content.trim();
+				list[contest] = list[contest] || {};
+				list[contest][problem] = list[contest][problem] || {};
+				list[contest][problem][ID] = yamlFront.loadFront(fs.readFileSync('src/' + file));
+				let content = list[contest][problem][ID].__content.trim();
 				fs.writeFileSync('dist' + '/' + file, content);
 				fs.writeFileSync('dist' + '/' + fileName + '.html', md.render(content));
-				delete data[contest][problem][ID].__content;
+				delete list[contest][problem][ID].__content;
 			}
 		}
 	});
+	let data = {};
+	data.data = list;
 	fs.writeFileSync('dist/list.json', JSON.stringify(data));
 }
 
