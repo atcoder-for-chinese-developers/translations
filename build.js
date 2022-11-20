@@ -7,13 +7,11 @@ const tex = require('markdown-it-texmath');
 const Prism = require('prismjs');
 const loadLanguages = require('prismjs/components/');
 const { enableLineNumbers } = require('./plugins/prism/line-numbers');
-const { enableToolbar } = require('./plugins/prism/toolbar');
 const { JSDOM } = require('jsdom');
 
 let dom = new JSDOM();
 
 enableLineNumbers(Prism, dom.window);
-enableToolbar(Prism, dom.window);
 
 function highlight(str, lang) {
 	if (lang) loadLanguages([ lang ]);
