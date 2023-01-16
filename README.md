@@ -1,5 +1,7 @@
 # Atcoder for Chinese 翻译仓库
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/efdcea51-1343-4f00-a443-1fc5bb49722f/deploy-status)](https://app.netlify.com/sites/atcoder-for-chinese-translations/deploys)
+
 ## 基本信息
 
 一个简易的存放文章的仓库，用于存放 Atcoder for Chinese 的翻译的仓库。
